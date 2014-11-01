@@ -9,9 +9,7 @@ struct Adder {
 }
 
 impl Adder {
-    fn add(&mut self) -> i32 {
-        self.x + self.y
-    }
+    fn add(&mut self) -> i32 { self.x + self.y }
 }
 
 fn main() {
