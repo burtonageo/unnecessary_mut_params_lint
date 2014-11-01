@@ -1,0 +1,11 @@
+[package]
+name = "unnecessary_mut_params_example"
+version = "0.1.0"
+authors = ["George Burton <burtonageo@gmail.com>"]
+
+[[bin]]
+name = "unnecessary_mut_params_example"
+path = "example.rs"
+
+[dependencies.unnecessary_mut_params_lint]
+path = ".."

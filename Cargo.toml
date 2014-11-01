@@ -1,0 +1,9 @@
+[package]
+name = "unnecessary_mut_params_lint"
+version = "0.0.1"
+authors = ["George Burton <burtonageo@gmail.com>"]
+
+[lib]
+name = "unnecessary_mut_params_lint"
+path = "src/lib.rs"
+plugin = true
