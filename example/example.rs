@@ -9,10 +9,15 @@ struct Adder {
 }
 
 impl Adder {
-    fn add(&mut self) -> i32 { self.x + self.y }
+    fn add(&self)            -> i32 { self.x + self.y }
+    fn add_linted(&mut self) -> i32 { self.x + self.y }
+    fn add_mut(&mut self)    -> i32 { self.x += self.y; self.x }
 }
 
 fn main() {
     let mut adder = Adder {x: 1, y: 2};
-    println!("Result is {}", adder.add());
+
+    println!("Result of add is {}", adder.add());
+    println!("Result of add_linted is {}", adder.add_linted());
+    println!("Result of add_mut is {}", adder.add_mut());
 }
