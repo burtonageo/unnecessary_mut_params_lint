@@ -23,11 +23,6 @@ declare_lint!(
     "Warn about unnecessarily mutable parameters to functions")
 
 struct Pass;
-
-impl Pass {
-    
-}
-
 impl LintPass for Pass {
     fn get_lints(&self) -> LintArray { lint_array!(UNNECESSARY_MUT_PARAMS_USAGE_FUNCS) }
 
@@ -39,6 +34,7 @@ impl LintPass for Pass {
                 block:   &ast::Block,
                 span:    Span,
                 node_id: ast::NodeId) {
+        let mutable_args = decl.inputs.iter().filter(is_mut).collect::<Vec<_>>();
         unimplemented!();
     }
 }
@@ -46,4 +42,13 @@ impl LintPass for Pass {
 #[plugin_registrar]
 pub fn plugin_registrar(reg: &mut Registry) {
     reg.register_lint_pass(box Pass as LintPassObject);
+}
+
+fn is_mut(arg: &&ast::Arg) -> bool {
+    match arg.ty.deref().node {
+        ast::TyPtr(ast::MutTy {ty: _, mutbl: ast::MutMutable}) => true,
+        ast::TyRptr(_, ast::MutTy {ty: _, mutbl: ast::MutMutable}) => true,
+        ast::TyInfer => {unimplemented!()},
+        _ => false,
+    }
 }
