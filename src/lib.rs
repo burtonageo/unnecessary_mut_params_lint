@@ -12,8 +12,7 @@ use syntax::codemap::Span;
 #[allow(unused_imports)] use syntax::parse::token;
 use syntax::visit::FnKind;
 
-use rustc::lint::LintPassObject;
-use rustc::lint::{Context, LintPass, LintArray};
+use rustc::lint::{LintPassObject, Context, LintPass, LintArray};
 #[allow(unused_imports)] use rustc::middle::def;
 use rustc::plugin::Registry;
 
